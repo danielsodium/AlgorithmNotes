@@ -1,0 +1,21 @@
+\documentclass[oneside]{book}
+
+\input{./../../includes/preamble.tex}
+
+\usepackage{xspace}
+\newcommand{\opt}{{\scshape opt}\xspace}
+
+
+\begin{document}
+\chapter{HW}
+
+
+\pf {
+    We can start by proving the Bottleneck Cycle property. Let $T*$ be a minimum spanning tree. Suppose to the contrary that there exists an edge $e \in T*$ where $e$ is the smallest edge in the cycle. If we remove edge $e$, then $T*$ breaks into two diconnected trees. Consider $T* -e + f$. This increases the bottleneck of $T*$ as $w_e < w_f$. $T*-e+f$ is a spanning tree because a cycle exists. Therefore, the smallest edge in a cycle must not be in $T*$.\\
+Now suppose we have the optimal graph \opt that contains every optimal path in $G$ for all $u,v \in G$. We can construct this by adding every vertex in $G$ and every optimal path between every pair of verticies in $G$. By the Bottleneck Cycle property, we know that for every cycle the smallest edge can be remove in \opt, so there cannot exist any cycles in $G$. It must also be connected as there is a path from every vertex to another. Therefore, \opt must exist and must be a tree.
+\\
+An algorithm for constructing this tree is by starting with all the edges and removing the smallest weight edge without disconnecting the graph. By the Bottleneck Cycle property, removing the smallest edge in the cycle is valid to create \opt, and if the edge is not part of a cycle, it will disconnect the graph. The runtime of this algorithm is $O(mlogn)$ because the implementation will use a priority queue.
+}
+
+
+\end{document}
